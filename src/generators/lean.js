@@ -17,7 +17,7 @@ module.exports = {
 				return ''
 			}
 			dict[ipRange] = true;
-			return `        list wan_fw_ips '${ipRange}/${prefix}'`;
+			return `	list wan_fw_ips '${ipRange}/${prefix}'`;
 		};
 		var generateComment = function (data) {
 			return '';
