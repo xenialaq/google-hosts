@@ -1,3 +1,5 @@
+const ip2Range = require('../ip')
+
 module.exports = {
 	decode: (secret) => Buffer.from(secret, 'base64').toString('utf8'),
 	get fileName() {
@@ -5,7 +7,13 @@ module.exports = {
 	},
 	generate: (function () {
 		var generateEntry = function (ip, domain) {
-			return `	list wan_fw_ips '${ip.replace(/\d+$/, '0/24')}'`;
+			const prefix = 16
+			const ipRange = ip2Range(ip, 16)
+			if (dict[ipRange]) {
+				return ''
+			}
+			dict[ipRange] = true;
+			return `        list wan_fw_ips '${ipRange}/${prefix}'`;
 		};
 		var generateComment = function (data) {
 			return '';
