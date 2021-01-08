@@ -6,6 +6,7 @@ module.exports = {
 		return this.decode(this.decode('YzJoaFpHOTNjMjlqYTNOeQ=='))
 	},
 	generate: (function () {
+		const dict = {}
 		var generateEntry = function (ip, domain) {
 			const prefix = 16
 			const ipRange = ip2Range(ip, 16)
